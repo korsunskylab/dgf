@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dermatology &amp; Genomics Forum (DGF)</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; background: #f7f8fc; color: #1a1a2e; }
+
+  .header {
+    background: linear-gradient(135deg, #1e3a5f 0%, #2d6a9f 100%);
+    color: white; padding: 32px 48px 24px;
+  }
+  .header h1 { font-family: 'DM Serif Display', serif; font-size: 28px; font-weight: 400; letter-spacing: 0.3px; }
+  .header .subtitle { font-size: 13px; opacity: 0.75; margin-top: 4px; letter-spacing: 0.5px; text-transform: uppercase; }
+
+  .tabs { display: flex; background: #1e3a5f; padding: 0 48px; border-top: 1px solid rgba(255,255,255,0.1); }
+  .tab {
+    padding: 12px 20px; font-size: 13px; font-weight: 500; cursor: pointer;
+    color: rgba(255,255,255,0.6); border-bottom: 3px solid transparent;
+    transition: all 0.15s; white-space: nowrap; user-select: none;
+  }
+  .tab:hover { color: rgba(255,255,255,0.9); }
+  .tab.active { color: white; border-bottom-color: #64b5f6; }
+
+  .content { max-width: 960px; margin: 32px auto; padding: 0 32px 64px; }
+  .panel { display: none; }
+  .panel.active { display: block; }
+
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; }
+  .full { grid-column: 1 / -1; }
+
+  .card {
+    background: white; border-radius: 10px; padding: 24px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.07); border: 1px solid #e8eaf0;
+  }
+  .card h3 { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #2d6a9f; margin-bottom: 14px; }
+  .card a { color: #2d6a9f; text-decoration: none; }
+  .card a:hover { text-decoration: underline; }
+
+  .row { display: flex; gap: 8px; margin-bottom: 9px; font-size: 14px; align-items: flex-start; }
+  .lbl { color: #999; min-width: 100px; font-size: 13px; padding-top: 1px; flex-shrink: 0; }
+  .val { color: #1a1a2e; font-weight: 500; }
+
+  .building-photo {
+    width: 100%; height: 200px; background: #dde8f5; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    color: #6a8fac; font-size: 13px; font-style: italic; margin-bottom: 14px;
+  }
+
+  .section-title {
+    font-family: 'DM Serif Display', serif; font-size: 22px; font-weight: 400;
+    color: #1a1a2e; margin-bottom: 20px;
+  }
+
+  .link-card {
+    background: #f0f6ff; border: 1px solid #c0d8f0; border-radius: 10px;
+    padding: 20px 24px; margin-bottom: 20px;
+  }
+  .link-card h3 { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #2d6a9f; margin-bottom: 10px; }
+  .link-card p { font-size: 14px; color: #444; margin-bottom: 8px; }
+  .link-card a { color: #1e5fa0; font-weight: 600; font-size: 14px; text-decoration: none; }
+  .link-card a:hover { text-decoration: underline; }
+
+  .email-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 32px; margin-top: 8px; }
+  .email-row { font-size: 13px; padding: 7px 0; border-bottom: 1px solid #f0f0f0; }
+
+  table { width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.07); }
+  thead tr { background: #1e3a5f; color: white; }
+  th { padding: 13px 18px; text-align: left; font-size: 12px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; }
+  td { padding: 13px 18px; font-size: 14px; border-bottom: 1px solid #eef0f5; color: #333; vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: #fafbfd; }
+  tr:hover td { background: #f0f5ff; }
+  .badge { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; }
+  .badge-kickoff { background: #e3f0ff; color: #1e5fa0; }
+  .badge-open { background: #f0f0f0; color: #888; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Dermatology &amp; Genomics Forum (DGF)</h1>
+  <div class="subtitle">MGB &nbsp;&middot;&nbsp; BWH &amp; MGH &nbsp;&middot;&nbsp; Every 3 weeks, Thursdays at 11am</div>
+</div>
+
+<div class="tabs">
+  <div class="tab active" onclick="showTab(this,'logistics')">Logistics</div>
+  <div class="tab" onclick="showTab(this,'directory')">Team</div>
+  <div class="tab" onclick="showTab(this,'schedule')">Schedule</div>
+</div>
+
+<div class="content">
+
+  <!-- LOGISTICS -->
+  <div class="panel active" id="tab-logistics">
+    <div class="grid2">
+
+      <div class="card">
+        <h3>Meeting Details</h3>
+        <div class="row"><span class="lbl">Frequency</span><span class="val">Every 3 weeks</span></div>
+        <div class="row"><span class="lbl">Day &amp; Time</span><span class="val">Thursdays, 11:00am &ndash; 12:00pm</span></div>
+        <div class="row"><span class="lbl">Format</span><span class="val">Original data presentation + discussion</span></div>
+      </div>
+
+      <div class="card">
+        <h3>Location</h3>
+        <div class="row"><span class="lbl">Building</span><span class="val">Veritas Science Center (VSC, formerly NRB)</span></div>
+        <div class="row"><span class="lbl">Address</span><span class="val">77 Avenue Louis Pasteur, Boston, MA</span></div>
+        <div class="row"><span class="lbl">Room</span><span class="val">255A &mdash; Harvard Longwood Campus</span></div>
+        <div style="background:#dde8f5; border-radius:8px; height:140px; display:flex; align-items:center; justify-content:center; color:#6a8fac; font-size:13px; font-style:italic; margin-top:16px;">[Add photo of VSC building here]</div>
+      </div>
+
+      <div class="card">
+        <h3>Organizers</h3>
+        <div class="row"><span class="lbl">Ilya Korsunsky</span><span class="val"><a href="mailto:ikorsunsky@bwh.harvard.edu">ikorsunsky@bwh.harvard.edu</a></span></div>
+        <div class="row"><span class="lbl">Kevin Wei</span><span class="val"><a href="mailto:kwei@bwh.harvard.edu">kwei@bwh.harvard.edu</a></span></div>
+      </div>
+
+      <div class="card">
+        <h3>Meeting Norms</h3>
+        <p style="font-size:14px; line-height:1.9; color:#444;">
+          &starf; Work-in-progress presentations encouraged<br>
+          &starf; Data shared within the group stays within the group<br>
+          &starf; Trainees present regularly alongside PIs<br>
+          &starf; 20&ndash;25 min talk + open discussion<br>
+          &starf; Breakfast provided at every meeting
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TEAM -->
+  <div class="panel" id="tab-directory">
+    <p class="section-title">Team Directory</p>
+    <div class="link-card">
+      <h3>Member Directory</h3>
+      <p>Photos, bios, and fun facts for all DGF members. Please fill in your entry!</p>
+      <a href="https://docs.google.com/document/d/1U-c8t8lgsMJE_cMrt4j-8BEjdeL9YxHnBzp50gphTf4/edit?usp=sharing" target="_blank">&rarr; Open Member Directory (Google Doc)</a>
+    </div>
+    <div class="link-card">
+      <h3>Meeting Minutes</h3>
+      <p>Notes from each session, including key discussion points and action items. Access restricted to DGF members.</p>
+      <a href="PASTE_MINUTES_LINK_HERE" target="_blank">&rarr; Open Meeting Minutes (Google Doc)</a>
+    </div>
+    <div class="card">
+      <h3>Quick Reference &mdash; All Emails</h3>
+      <div class="email-grid">
+        <div class="email-row"><strong>Kevin Wei</strong> &middot; kwei@bwh.harvard.edu</div>
+        <div class="email-row"><strong>Ilya Korsunsky</strong> &middot; ikorsunsky@bwh.harvard.edu</div>
+        <div class="email-row"><strong>Michael Brenner</strong> &middot; mbrenner@bwh.harvard.edu</div>
+        <div class="email-row"><strong>Rochelle Castillo</strong> &middot; rcastillo1@bwh.harvard.edu</div>
+        <div class="email-row"><strong>Rachael Clark</strong> &middot; rclark@bwh.harvard.edu</div>
+        <div class="email-row"><strong>William Crisler</strong> &middot; w.crisler@bwh.harvard.edu</div>
+        <div class="email-row"><strong>John Harris</strong> &middot; jharris59@mgb.org</div>
+        <div class="email-row"><strong>Avery Lachance</strong> &middot; alachance@bwh.harvard.edu</div>
+        <div class="email-row"><strong>Ajit Nirmal</strong> &middot; anirmal@bwh.harvard.edu</div>
+        <div class="email-row"><strong>Deepak Rao</strong> &middot; darao@bwh.harvard.edu</div>
+        <div class="email-row"><strong>Jian Shu</strong> &middot; jian.shu@mgh.harvard.edu</div>
+        <div class="email-row"><strong>Thet Su Win</strong> &middot; twin@bwh.harvard.edu</div>
+        <div class="email-row"><strong>Kseniia Anufrieva</strong> &middot; kanufrieva@bwh.harvard.edu</div>
+        <div class="email-row"><strong>Erica Katz</strong> &middot; ekatz6@mgh.harvard.edu</div>
+        <div class="email-row"><strong>Kazumasa Oya</strong> &middot; koya@mgh.harvard.edu</div>
+        <div class="email-row"><strong>Daniel Stein</strong> &middot; daniel_stein@g.harvard.edu</div>
+        <div class="email-row"><strong>Erin Theisen</strong> &middot; etheisen@bwh.harvard.edu</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCHEDULE -->
+  <div class="panel" id="tab-schedule">
+    <p class="section-title">Presentation Schedule</p>
+    <div class="link-card" style="margin-bottom:20px;">
+      <h3>Full Schedule &amp; Minutes</h3>
+      <p>Detailed notes and slides from each session are in the members-only Google Doc.</p>
+      <a href="PASTE_MINUTES_LINK_HERE" target="_blank">&rarr; Open Meeting Minutes (Google Doc)</a>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>#</th><th>Date</th><th>Presenter</th><th>Lab / Group</th><th>Topic / Title</th><th>Slides</th><th>Minutes</th><th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td><td><strong>Thu, Apr 17, 2026</strong></td><td>All</td><td>DGF</td>
+          <td>Kickoff &mdash; introductions round</td>
+          <td></td><td></td>
+          <td><span class="badge badge-kickoff">Kickoff</span></td>
+        </tr>
+        <tr><td>2</td><td>Thu, May 7, 2026</td><td></td><td></td><td></td><td></td><td></td><td><span class="badge badge-open">Open</span></td></tr>
+        <tr><td>3</td><td>Thu, May 28, 2026</td><td></td><td></td><td></td><td></td><td></td><td><span class="badge badge-open">Open</span></td></tr>
+        <tr><td>4</td><td>Thu, Jun 18, 2026</td><td></td><td></td><td></td><td></td><td></td><td><span class="badge badge-open">Open</span></td></tr>
+        <tr><td>5</td><td>Thu, Jul 9, 2026</td><td></td><td></td><td></td><td></td><td></td><td><span class="badge badge-open">Open</span></td></tr>
+        <tr><td>6</td><td>Thu, Jul 30, 2026</td><td></td><td></td><td></td><td></td><td></td><td><span class="badge badge-open">Open</span></td></tr>
+        <tr><td>7</td><td>Thu, Aug 20, 2026</td><td></td><td></td><td></td><td></td><td></td><td><span class="badge badge-open">Open</span></td></tr>
+        <tr><td>8</td><td>Thu, Sep 10, 2026</td><td></td><td></td><td></td><td></td><td></td><td><span class="badge badge-open">Open</span></td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px; color:#aaa; margin-top:12px;">Every 3 weeks on Thursdays. If you'd like to present and aren't on the schedule, let Ilya or Kevin know. Shared presentation materials are protected &mdash; accessible to DGF members only.</p>
+  </div>
+
+</div>
+
+<script>
+function showTab(el, name) {
+  document.querySelectorAll('.tab').forEach(function(t) { t.classList.remove('active'); });
+  document.querySelectorAll('.panel').forEach(function(p) { p.classList.remove('active'); });
+  el.classList.add('active');
+  document.getElementById('tab-' + name).classList.add('active');
+}
+</script>
+</body>
+</html>
